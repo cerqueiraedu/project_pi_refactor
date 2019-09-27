@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using PerformanceBiller.Entities.Abstractions;
-using System;
+﻿using PerformanceBiller.Entities.Abstractions;
 
 
 namespace PerformanceBiller.Entities

@@ -1,17 +1,13 @@
-﻿using System;
-using PerformanceBiller.Entities.Abstractions;
-using System.Collections.Generic;
+﻿using PerformanceBiller.Entities.Abstractions;
 
 namespace PerformanceBiller.Entities
 {
     public class Performance
     {
-        public string Name { get; private set; }
-        public int Audience { get; private set; }
-        public int CalculatedAmount { get; private set; }
-        public int VolumeCredits { get; private set; }
+        public string Name { get; }
+        public int Audience { get; }
 
-        public PlayGenre Play { get; private set; }
+        public PlayGenre Play { get; }
 
         public Performance(PlayGenre play, int audience, string name)
         {
@@ -20,16 +16,8 @@ namespace PerformanceBiller.Entities
             Name = name;
         }
 
-        public int Calculate()
-        {
-            CalculatedAmount = Play.CalculateAmount(this);
-            return CalculatedAmount;
-        }
+        public int Calculate() => Play.CalculateAmount(this);
 
-        public int CalculateVolumeCredits()
-        {
-            VolumeCredits = Play.CalculateVolumeCredits(this);
-            return VolumeCredits;
-        }
+        public int CalculateVolumeCredits() => Play.CalculateVolumeCredits(this);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PerformanceBiller.Entities;
-using PerformanceBiller.Infra.DTO.Repositories;
 using PerformanceBiller.Infra.DTO.Repositories.Abstractions;
 using PerformanceBiller.Infra.Factories;
 using PerformanceBiller.Repositories.Abstractions;

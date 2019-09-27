@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using PerformanceBiller.Entities;
 using PerformanceBiller.Entities.Abstractions;
-using PerformanceBiller.Infra.DTO;
 
 namespace PerformanceBiller.Infra.Factories
 {
