@@ -4,8 +4,9 @@ using System.Text;
 
 namespace PerformanceBiller.Entities.Abstractions
 {
-    public interface IPlayGenre
+    public abstract class PlayGenre
     {
-        int Calculate(int audience);
+        protected abstract int Amount { get; }
+        public abstract int Calculate(int audience);
     }
 }

@@ -1,16 +1,14 @@
 ﻿using PerformanceBiller.Entities.Abstractions;
 using System.Collections.Generic;
 
-namespace PerformanceBiller.Entities
+namespace PerformanceBiller.DTOs
 {
     public class Performance
     {
+        public string PlayId { get; private set; }
         public int Audience { get; private set; }
-        public PlayGenre Play { get; private set; }
-
-        public Performance(PlayGenre play, int audience)
+        public Performance(int audience)
         {
-            Play = play;
             Audience = audience;
         }
     }

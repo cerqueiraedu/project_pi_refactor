@@ -4,17 +4,18 @@ using System;
 
 namespace PerformanceBiller.Entities
 {
-    public class Tragedy : IPlayGenre
+    public class Tragedy : PlayGenre
     {
-        public int Calculate(int audience)
+        protected override int Amount => 40000;
+        public int CalculatedAmount { get; private set; }
+        public override int Calculate(int audience)
         {
-            var thisAmount = 40000;
             if (audience > 30)
             {
-                thisAmount += 1000 * (audience - 30);
+                CalculatedAmount = (1000 * (audience - 30)) + Amount;
             }
 
-            return thisAmount;
+            return CalculatedAmount;
         }
     }
 }

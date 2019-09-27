@@ -20,13 +20,13 @@ namespace PerformanceBiller
                 switch (play.GetValue("type").ToString()) {
                     case "tragedy":
                         var tragedy = new Tragedy();
-                        var performance1 = new Performance(tragedy, Convert.ToInt32(performace.GetValue("audience")));
-                        thisAmount = performance1.CalculatePlayCost();
+                       // var performance1 = new Performance(tragedy, Convert.ToInt32(performace.GetValue("audience")));
+                        //thisAmount = performance1.CalculatePlayCost();
                         break;
                     case "comedy":
                         var comedy = new Comedy();
-                        var performance2 = new Performance(comedy, Convert.ToInt32(performace.GetValue("audience")));
-                        thisAmount = performance2.CalculatePlayCost();
+                        //var performance2 = new Performance(comedy, Convert.ToInt32(performace.GetValue("audience")));
+                        //thisAmount = performance2.CalculatePlayCost();
                         break;
                     default:
                         throw new Exception($"unknown type: { play.GetValue("type").ToString()}");
