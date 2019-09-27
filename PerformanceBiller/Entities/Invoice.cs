@@ -10,8 +10,9 @@ namespace PerformanceBiller.Entities
         public Customer Customer { get; private set; }
         public IList<Performance> Performances { get; private set; }
 
-        public Invoice()
+        public Invoice(Customer customer)
         {
+            Customer = customer;
             Performances = new List<Performance>();
         }
 

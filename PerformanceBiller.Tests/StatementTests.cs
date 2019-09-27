@@ -4,6 +4,11 @@ using PerformanceBiller.Repositories;
 using PerformanceBiller.Services;
 using System.IO;
 using System.Linq;
+using PerformanceBiller.Entities;
+using PerformanceBiller.Infra.DTO.Repositories;
+using PerformanceBiller.Infra.Factories;
+using PerformanceBiller.Infra.Repositories;
+using PerformanceBiller.Repositories.Abstractions;
 using Xunit;
 
 namespace PerformanceBiller.Tests
@@ -42,15 +47,11 @@ namespace PerformanceBiller.Tests
         [Fact]
         public void Statement_refactored()
         {
-            var playRepository = new PlayRepository("..\\..\\..\\");
-            var play = playRepository.Get();
-            //Assert.Equal(play["hamlet"].Type, "tragedy");
-
-            var invoiceRepository = new InvoiceRepository("..\\..\\..\\");
-            var invoice = invoiceRepository.Get().ToList();
-            Assert.Equal(invoice.Count, 1);
-
-            var statementService = new StatementService(playRepository, invoiceRepository);
+            const string basePath = "..\\..\\..\\";
+            IInvoiceRepository invoicerepo = new InvoiceRepository(new PlayDtoRepository(basePath), new InvoiceDtoRepository(basePath));
+            var invoices = invoicerepo.Get().ToList();
+            var tragedy = invoices.First().Performances.Where(p => p.Play is Tragedy).Sum(p => p.Calculate());
+            var hamlet = invoices.First().Performances.Where(p => p.Name == "As You Like It").Sum(p => p.Calculate());
 
         }
     }

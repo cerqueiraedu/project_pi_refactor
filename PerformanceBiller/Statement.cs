@@ -19,12 +19,12 @@ namespace PerformanceBiller
                 var thisAmount = 0;
                 switch (play.GetValue("type").ToString()) {
                     case "tragedy":
-                        var tragedy = new Tragedy();
+                        var tragedy = new Tragedy(null);
                        // var performance1 = new Performance(tragedy, Convert.ToInt32(performace.GetValue("audience")));
                         //thisAmount = performance1.CalculatePlayCost();
                         break;
                     case "comedy":
-                        var comedy = new Comedy();
+                        var comedy = new Comedy(null);
                         //var performance2 = new Performance(comedy, Convert.ToInt32(performace.GetValue("audience")));
                         //thisAmount = performance2.CalculatePlayCost();
                         break;

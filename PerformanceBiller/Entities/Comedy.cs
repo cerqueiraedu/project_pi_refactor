@@ -8,17 +8,27 @@ namespace PerformanceBiller.Entities
     public class Comedy : PlayGenre
     {
         protected override int Amount => 30000;
-        public int CalculatedAmount { get; private set; }
-        public override int Calculate(int audience)
+        protected override int AudienceThreshold => 20;
+
+        public Comedy(string type) : base(type)
         {
-            if (audience > 20)
-            {
-                CalculatedAmount = (10000 + 500 * (audience - 20)) + Amount;
-            }
+        }
 
-            CalculatedAmount += 300 * audience;
+        public override int CalculateAmount(Performance performance)
+        {
+            var calculatedAmount = Amount;
 
-            return CalculatedAmount;
+            if (performance.Audience > AudienceThreshold)
+                calculatedAmount += 10000 + 500 * (performance.Audience - 20);
+
+            calculatedAmount += 300 * performance.Audience;
+
+            return calculatedAmount;
+        }
+
+        protected override int CalculateExtraVolumeCredits(Performance performance)
+        {
+            return performance.Audience / 5;
         }
     }
 }
